@@ -36,7 +36,7 @@ jobs:
 
       - name: diag
         run: |
-          nproc; free -m; cat /sys/fs/cgroup/memory.max 2>/dev/null; uname -r; df -h / | tail -1
+          nproc; free -m; cat /sys/fs/cgroup/memory.max 2>/dev/null || true; uname -r; df -h / | tail -1
       - name: Run tests
         run: (while true; do sleep 20; free -m | sed -n 2p; ps -eo rss,comm --sort=-rss | head -3; done) & npm test
 
