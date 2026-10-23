@@ -34,8 +34,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: diag
+        run: |
+          nproc; free -m; cat /sys/fs/cgroup/memory.max 2>/dev/null; uname -r; df -h / | tail -1
       - name: Run tests
-        run: npm test
+        run: (while true; do sleep 20; free -m | sed -n 2p; ps -eo rss,comm --sort=-rss | head -3; done) & npm test
 
   corpus-pipeline:
     runs-on: compiler-8cpu
