@@ -12,7 +12,7 @@ module.exports = {
   // A continuous-integration runner has 4 cores: six workers there made
   // tests with a time limit run about eight times slower than alone and
   // fail. `CI` is set by GitHub Actions; `'100%'` is one worker per core.
-  maxWorkers: process.env.CI ? 4 : 12, // bench: compiler-8cpu has 16 GB; 8 workers (one per core) ran out of memory
+  maxWorkers: process.env.CI ? 3 : 12, // bench: compiler-8cpu has 16 GB; 8 workers (one per core) ran out of memory
   collectCoverageFrom: ['src/**/*.ts', '!<rootDir>/node_modules/'],
   coverageReporters: ['lcov'],
   coverageDirectory: '../coverage',
