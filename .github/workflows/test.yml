@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: compiler-8cpu
 
     # The suite runs on the newest Node the project is developed on and on
     # the oldest major version `package.json` declares support for
@@ -38,7 +38,7 @@ jobs:
         run: npm test
 
   corpus-pipeline:
-    runs-on: ubuntu-latest
+    runs-on: compiler-8cpu
 
     steps:
       - uses: actions/checkout@v5
@@ -117,7 +117,7 @@ jobs:
         run: npx --yes tsx docs/mathnet/scripts/check-roundtrip.ts
 
   lint:
-    runs-on: ubuntu-latest
+    runs-on: compiler-4cpu
 
     steps:
       - uses: actions/checkout@v5
@@ -135,7 +135,7 @@ jobs:
         run: npx oxlint src
 
   typecheck:
-    runs-on: ubuntu-latest
+    runs-on: compiler-8cpu
 
     steps:
       - uses: actions/checkout@v5
